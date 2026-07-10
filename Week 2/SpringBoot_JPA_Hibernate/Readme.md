@@ -1,8 +1,6 @@
-# Spring Data JPA & Hibernate - ORM Learn
+# Spring Boot • Spring Data JPA • Hibernate ORM
 
-A simple Spring Boot project demonstrating the fundamentals of **Spring Boot**, **Spring Data JPA**, and **Hibernate ORM** by connecting a Java application with a MySQL database.
-
-This project is developed as a series of hands-on exercises where each exercise builds upon the previous one, gradually implementing CRUD operations, Query Methods, and Object Relational Mapping (ORM).
+A hands-on project demonstrating the fundamentals of **Spring Boot**, **Spring Data JPA**, and **Hibernate ORM** using **MySQL**. The project is developed module by module, where each module builds upon the previous one and introduces new concepts such as CRUD operations, Query Methods, and Object-Relational Mapping (ORM).
 
 ---
 
@@ -11,7 +9,7 @@ This project is developed as a series of hands-on exercises where each exercise 
 - Java
 - Spring Boot
 - Spring Data JPA
-- Hibernate
+- Hibernate ORM
 - MySQL
 - Maven
 
@@ -20,25 +18,35 @@ This project is developed as a series of hands-on exercises where each exercise 
 # 📂 Project Structure
 
 ```
-src
-├── main
-│   ├── java
-│   │   └── com.cognizant.ormlearn
-│   │       ├── model
-│   │       │   ├── Country.java
-│   │       │   └── Stock.java
-│   │       │
-│   │       ├── repository
-│   │       │   ├── CountryRepository.java
-│   │       │   └── StockRepository.java
-│   │       │
-│   │       ├── service
-│   │       │   └── CountryService.java
-│   │       │
-│   │       └── OrmLearnApplication.java
-│   │
-│   └── resources
-│       └── application.properties
+orm-learn
+│
+├── src/main/java
+│   └── com.cognizant.ormlearn
+│       │
+│       ├── model
+│       │   ├── Country.java
+│       │   ├── Stock.java
+│       │   ├── Employee.java
+│       │   ├── Department.java
+│       │   └── Skill.java
+│       │
+│       ├── repository
+│       │   ├── CountryRepository.java
+│       │   ├── StockRepository.java
+│       │   ├── EmployeeRepository.java
+│       │   ├── DepartmentRepository.java
+│       │   └── SkillRepository.java
+│       │
+│       ├── service
+│       │   ├── CountryService.java
+│       │   ├── EmployeeService.java
+│       │   ├── DepartmentService.java
+│       │   └── SkillService.java
+│       │
+│       └── OrmLearnApplication.java
+│
+└── src/main/resources
+    └── application.properties
 ```
 
 ---
@@ -51,178 +59,131 @@ Database Name
 ormlearn
 ```
 
-Current Tables
+Tables Used
 
 - country
 - stock
+- department
+- employee
+- skill
+- employee_skill
 
 ---
 
-# 📌 Hands-on 1 : Spring Data JPA Quick Example
+# 📚 Learning Flow
+
+```
+Spring Boot Setup
+        │
+        ▼
+Country CRUD Operations
+        │
+        ▼
+Spring Data JPA Query Methods
+        │
+        ▼
+Hibernate ORM Mapping
+        │
+        ▼
+Many-To-One
+        │
+        ▼
+One-To-Many
+        │
+        ▼
+Many-To-Many
+```
+
+---
+
+# 📦 Module 1 : Spring Boot + Spring Data JPA Basics
 
 ## Objective
 
-- Create a Spring Boot project using Spring Initializr.
-- Configure MySQL database connectivity.
-- Map a database table to a Java Entity using JPA.
-- Create a Repository using Spring Data JPA.
-- Implement a Service layer.
-- Retrieve all records from the database.
+Set up a Spring Boot project and perform basic CRUD operations using Spring Data JPA.
+
+### Hands-ons Covered
+
+- Spring Boot Project Setup
+- MySQL Configuration
+- Entity Mapping
+- Repository Creation
+- Service Layer
+- Find Country by Code
+- Add Country
+
+### Files Used
+
+```
+Country.java
+
+CountryRepository.java
+
+CountryService.java
+
+OrmLearnApplication.java
+```
 
 ### Features Implemented
 
-- Spring Boot project setup
-- MySQL configuration
-- JPA Entity Mapping
-- Repository using `JpaRepository`
-- Service Layer
-- Fetch all countries using `findAll()`
-- Display records in console
+- Configure Spring Boot with MySQL
+- Entity Mapping using JPA
+- Repository using JpaRepository
+- Retrieve all Countries
+- Find Country by ID
+- Add Country
+- Transaction Management
 
-### Sample Output
+### Concepts Covered
 
-```
-Application Started
-
-Fetching Countries...
-
-IN - India
-US - United States
-
-Completed Successfully.
-```
-
----
-
-# 📌 Hands-on 2
-
-### Hibernate XML Configuration (Theory)
-
-Topics Covered
-
-- SessionFactory
-- Session
-- Transaction
-- beginTransaction()
-- commit()
-- rollback()
-- session.save()
-- session.get()
-- session.delete()
-- session.createQuery()
-
----
-
-# 📌 Hands-on 3
-
-### Hibernate Annotation Configuration (Theory)
-
-Topics Covered
-
+- Spring Boot
+- Spring Data JPA
+- Hibernate
 - @Entity
 - @Table
 - @Id
-- @GeneratedValue
 - @Column
-- Hibernate Configuration
-- Annotation-Based Mapping
-
----
-
-# 📌 Hands-on 4
-
-### JPA vs Hibernate vs Spring Data JPA (Theory)
-
-| JPA | Hibernate | Spring Data JPA |
-|-----|-----------|-----------------|
-| Specification | ORM Framework | Abstraction over Hibernate |
-| Defines Rules | Implements JPA | Reduces Boilerplate Code |
-
----
-
-# 📌 Hands-on 5 : Country Data Configuration
-
-## Objective
-
-Prepare the database for implementing CRUD operations.
-
-### Tasks Completed
-
-- Configured Hibernate Validation (`ddl-auto=validate`)
-- Created and populated the Country table
-- Verified retrieval using Spring Data JPA
-
----
-
-# 📌 Hands-on 6 : Find Country by Code
-
-## Objective
-
-Retrieve a country using its country code.
-
-### Features Implemented
-
-- Custom Exception (`CountryNotFoundException`)
-- `findCountryByCode()`
-- `JpaRepository.findById()`
-- Optional Handling
-- Transaction Management
-
-### Concepts Covered
-
-- `findById()`
-- `Optional`
-- Exception Handling
-- `@Transactional`
-
----
-
-# 📌 Hands-on 7 : Add Country
-
-## Objective
-
-Insert a new country into the database.
-
-### Features Implemented
-
-- `addCountry()`
-- `JpaRepository.save()`
-- Verify insertion using `findById()`
-
-### Concepts Covered
-
-- Entity Persistence
+- JpaRepository
+- @Transactional
+- Optional
 - CRUD Operations
-- Service Layer
-- Transaction Management
-
-### Sample Output
-
-```
-Adding New Country...
-
-Country Added Successfully
-
-NP - Nepal
-```
 
 ---
 
-# 📌 Module 2 : Spring Data JPA Query Methods
+# 📦 Module 2 : Spring Data JPA Query Methods
 
 ## Objective
 
-Demonstrate the implementation of **Spring Data JPA Query Methods** without writing SQL queries.
+Learn how Spring Data JPA automatically generates SQL queries from repository method names.
 
----
+### Hands-ons Covered
 
-## Hands-on 1 : Country Query Methods
+### Country Query Methods
 
-### Features Implemented
+- Search by Containing Text
+- Search by Starting Text
+- Sort using OrderBy
 
-- Search countries containing specific text.
-- Search countries containing text and sort them alphabetically.
-- Search countries whose names start with a specific letter.
+### Stock Query Methods
+
+- Search Between Dates
+- Greater Than
+- Top Records
+- Sorting
+
+### Files Used
+
+```
+CountryRepository.java
+
+CountryService.java
+
+Stock.java
+
+StockRepository.java
+
+OrmLearnApplication.java
+```
 
 ### Repository Methods
 
@@ -232,31 +193,7 @@ findByNameContaining()
 findByNameContainingOrderByNameAsc()
 
 findByNameStartingWith()
-```
 
-### Query Methods Covered
-
-- `Containing`
-- `StartingWith`
-- `OrderBy`
-
----
-
-## Hands-on 2 : Stock Query Methods
-
-### Features Implemented
-
-- Created Stock Entity
-- Created Stock Repository
-- Added sample Stock database
-- Search stock records between two dates.
-- Filter stocks with closing price greater than a given value.
-- Retrieve Top 3 records by highest volume.
-- Retrieve Top 3 lowest closing prices for a stock.
-
-### Repository Methods
-
-```java
 findByCodeAndDateBetween()
 
 findByCodeAndCloseGreaterThan()
@@ -266,62 +203,207 @@ findTop3ByOrderByVolumeDesc()
 findTop3ByCodeOrderByCloseAsc()
 ```
 
-### Query Methods Covered
+### Concepts Covered
 
-- `Between`
-- `GreaterThan`
-- `Top`
-- `OrderBy`
-- Multiple Conditions
+- Query Methods
+- Automatic SQL Generation
+- Filtering
+- Sorting
+- Between
+- GreaterThan
+- Top
+- OrderBy
 
 ---
 
-# 📖 Concepts Covered
+# 📦 Module 3 : Hibernate Object-Relational Mapping (ORM)
+
+## Objective
+
+Implement relationships between entities using Hibernate ORM.
+
+### Hands-ons Covered
+
+### Many-To-One
+
+Employee ➜ Department
+
+### One-To-Many
+
+Department ➜ Employees
+
+### Many-To-Many
+
+Employee ⇄ Skill
+
+### Files Used
+
+```
+Employee.java
+
+Department.java
+
+Skill.java
+
+EmployeeRepository.java
+
+DepartmentRepository.java
+
+SkillRepository.java
+
+EmployeeService.java
+
+DepartmentService.java
+
+SkillService.java
+
+OrmLearnApplication.java
+```
+
+### Relationship Mapping
+
+```java
+@ManyToOne
+
+@JoinColumn
+
+@OneToMany
+
+mappedBy
+
+FetchType.LAZY
+
+FetchType.EAGER
+
+@ManyToMany
+
+@JoinTable
+```
+
+### Features Implemented
+
+- Get Employee with Department
+- Add Employee
+- Update Employee Department
+- Get Department with Employees
+- Get Employee with Skills
+- Add Skill to Employee
+
+### Concepts Covered
+
+- Object Relational Mapping
+- Entity Relationships
+- Lazy Loading
+- Eager Loading
+- Join Tables
+- Foreign Keys
+- Cascade Understanding
+- Hibernate Relationship Mapping
+
+---
+
+# 🗄 Database Relationship
+
+```
+                    Department
+                    ----------
+                    dp_id
+                    dp_name
+                        ▲
+                        │
+                  Many-To-One
+                        │
+                        │
+Employee ----------------┘
+--------
+em_id
+em_name
+em_salary
+em_date_of_birth
+
+        │
+        │
+      Many-To-Many
+        │
+        ▼
+
+Skill
+-----
+sk_id
+sk_name
+
+
+Bridge Table
+
+employee_skill
+-------------------
+es_em_id
+es_sk_id
+```
+
+---
+
+# 📖 Key Concepts Learned
 
 ### Spring Boot
 
+- Spring Initializr
 - Auto Configuration
 - Dependency Injection
-- Application Configuration
 
 ### Spring Data JPA
 
 - JpaRepository
 - CRUD Operations
-- Query Method Creation
+- Query Methods
 - Transactions
 
-### Hibernate
+### Hibernate ORM
 
-- ORM
 - Entity Mapping
+- Relationship Mapping
 - Schema Validation
 - SQL Generation
 
-### Query Methods
+### JPA Relationships
 
-- `Containing`
-- `StartingWith`
-- `Between`
-- `GreaterThan`
-- `Top`
-- `OrderBy`
+- @ManyToOne
+- @OneToMany
+- @ManyToMany
+- @JoinColumn
+- @JoinTable
+- mappedBy
+- FetchType.LAZY
+- FetchType.EAGER
 
 ---
 
-# 🚀 Current Progress
+# ✅ Project Completion Status
 
 | Module | Status |
-|---------|--------|
+|----------|--------|
 | Spring Boot Setup | ✅ Completed |
-| Country CRUD Operations | ✅ Completed |
+| Spring Data JPA CRUD | ✅ Completed |
 | Country Query Methods | ✅ Completed |
 | Stock Query Methods | ✅ Completed |
-| ORM Mapping | ⏳ Next Module |
-| Many-to-One Mapping | ⏳ Pending |
-| One-to-Many Mapping | ⏳ Pending |
-| Many-to-Many Mapping | ⏳ Pending |
+| Many-To-One Mapping | ✅ Completed |
+| One-To-Many Mapping | ✅ Completed |
+| Many-To-Many Mapping | ✅ Completed |
 
 ---
 
-> This README will continue to be updated as additional Spring Boot, Spring Data JPA, and Hibernate hands-on exercises are completed.
+# 🎯 Learning Outcome
+
+By completing this project, I gained hands-on experience with:
+
+- Building Spring Boot applications
+- Integrating MySQL with Spring Data JPA
+- Implementing CRUD operations
+- Creating custom Query Methods
+- Working with Hibernate ORM
+- Mapping entity relationships
+- Understanding Lazy vs Eager Fetching
+- Managing transactions using Spring
+
+---
+
