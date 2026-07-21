@@ -1,7 +1,7 @@
 # Cognizant Skill Spring Course Module wise work
 
-Week 1 - Completed
-Week 2 - Completed
-Week 3 - Completed
-Week 4 - Incomplete
-Week 5 - Incomplete
+Week 1 ✅ - Design Pattern | Data Structure and Algo | PL SQL | Unit Testing  <br><br>
+Week 2 ✅ - Spring Core and Maven | Spring Data JPA with Spring Boot, Hibernate <br><br>
+Week 3 ✅ - Spring Rest & Security <br><br>
+Week 4 ✅ - Microservices with Spring Boot and Spring Cloud <br><br>
+Week 5 - Incomplete - React 
